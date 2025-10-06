@@ -4,11 +4,11 @@ const { query, validationResult } = require("express-validator");
 const Eventos = require("../../models/eventos");
 
 const apiKeyMiddkeware = require("../../middlewares/apiKey");
-const basicAuth = require("../../middlewares/basicAuth");
-
+//const basicAuth = require("../../middlewares/basicAuth");
+const jwtAuth = require("../../middlewares/jwtAuth");
 //router.use(apiKeyMiddkeware);
 
-router.use(basicAuth);
+router.use(jwtAuth);
 let eventos = [];
 
 router.get("/", (req, res) => {

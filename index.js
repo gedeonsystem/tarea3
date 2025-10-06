@@ -11,6 +11,8 @@ const performance = require("./middlewares/perfomance");
 /** Controllers */
 const eventosV1 = require("./controllers/v1/eventos");
 const authsV1 = require("./controllers/v1/auths");
+const usersV1 = require("./controllers/v1/users");
+
 //+++++++++++++++++++++++++++++++++++++++++++++//
 const app = express();
 
@@ -39,6 +41,7 @@ const PORT = 3001;
 /** Controllers */
 app.use("/api/v1/eventos", eventosV1);
 app.use("/api/v1/auths", authsV1);
+app.use("/api/v1/users", usersV1);
 
 app.get("/", (req, res) => {
   res.send("API de Eventos");
