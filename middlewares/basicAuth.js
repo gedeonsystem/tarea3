@@ -6,21 +6,21 @@ module.exports = (req, res, next) => {
   if (!authHeader) {
     return res
       .status(401)
-      .json({ code: "UA", message: "Authorization header is required!" });
+      .json({ code: "UA", message: "Authorization header es requerido!" });
   }
 
   const [type, credentials] = authHeader.split(" ");
   if (type !== "Basic") {
     return res
       .status(401)
-      .json({ code: "UA", message: "Authorization type is not supported!" });
+      .json({ code: "UA", message: "Authorization type no es soportado!" });
   }
   console.log("credentials Base 64:", credentials);
 
   if (!credentials) {
     return res
       .status(401)
-      .json({ code: "UA", message: "Credentials are required!" });
+      .json({ code: "UA", message: "Las credenciales son requeridas!" });
   }
 
   const rawCredentials = Buffer.from(credentials, "base64").toString("utf-8");
@@ -38,12 +38,10 @@ module.exports = (req, res, next) => {
 
   return Users.getUserByEmail(email, (err, user) => {
     if (err) {
-      return res
-        .status(500)
-        .json({
-          code: "ER",
-          message: "Error getting user by username and password!",
-        });
+      return res.status(500).json({
+        code: "ER",
+        message: "Error getting user by username and password!",
+      });
     }
     if (!user) {
       return res
