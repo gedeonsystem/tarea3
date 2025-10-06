@@ -6,7 +6,9 @@ return (module.exports = (req, res, next) => {
 
   const { session: { user } = {} } = req;
   if (!user) {
-    return res.status(401).json({ code: "UA", message: "User not logged in!" });
+    return res
+      .status(401)
+      .json({ code: "UA", message: "Usuario es no logeado!" });
   }
   next();
 });

@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const basicAuthMiddleware = require("../../middlewares/basicAuth");
-const Eventos = require("../../models/users");
+const Users = require("../../models/users");
 const jwtSecret = "ricardolaica2025";
 
 router.get("/token", basicAuthMiddleware, (req, res) => {
